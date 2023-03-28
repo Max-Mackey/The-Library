@@ -38,17 +38,34 @@ submitBtn.addEventListener("click", (event) => {
   const newTitle = document.createElement("div");
   newTitle.textContent = `"${book.title}"`;
   newBook.appendChild(newTitle);
-  newBook.classList.add("content");
+  newTitle.classList.add("content");
   //adds an author to the newBook div
   const newAuthor = document.createElement("div");
   newAuthor.textContent = book.author;
   newBook.appendChild(newAuthor);
-  newBook.classList.add("content");
+  newAuthor.classList.add("content");
   //adds the pages to the newBook div
   const newPages = document.createElement("div");
   newPages.textContent = `${book.pages} pages`;
   newBook.appendChild(newPages);
-  newBook.classList.add("content");
+  newPages.classList.add("content");
+  // adds a read button to the newBook div
+  const readButton = document.createElement("button");
+  readButton.textContent = `Have not read`;
+  readButton.dataset.index = myLibrary.indexOf(book);
+  newBook.appendChild(readButton);
+  readButton.classList.add("notRead");
+
+  const removeButton = document.createElement("removeButton");
+  removeButton.textContent = "Remove Book";
+  removeButton.dataset.index = myLibrary.indexOf(book);
+  newBook.appendChild(removeButton);
+  removeButton.classList.add("removeButton");
+  removeButton.addEventListener("click", () => {
+    myLibrary.splice(myLibrary.indexOf(book), 1);
+    newBook.remove();
+  });
+
   //adds the new book to the centered book div on web page
   const booksDiv = document.querySelector(".books");
   booksDiv.appendChild(newBook);

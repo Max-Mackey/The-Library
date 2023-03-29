@@ -1,10 +1,10 @@
 // Add book functionality to create pop up with forms, and gray out page for focus
-var button = document.getElementById("addButton");
-var popup = document.getElementById("popup");
-var closeButton = document.getElementById("close");
+const button = document.getElementById("addButton");
+const popup = document.getElementById("popup");
+const closeButton = document.getElementById("close");
 
 button.onclick = function () {
-  popup.style.display = "block";
+  popup.style.display = "flex";
   overlay.style.display = "block";
 };
 closeButton.onclick = function () {
@@ -20,14 +20,16 @@ submitBtn.addEventListener("click", (event) => {
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
   const pages = document.querySelector("#pages").value;
-
+  // Book constructor function
   function Book(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.read = false;
   }
+  // library array to store books
   let myLibrary = [];
-  // adds new book to library array
+  // create new book object and add to library array
   const book = new Book(title, author, pages);
   myLibrary.push(book);
   const bookIndex = 0;
@@ -52,9 +54,23 @@ submitBtn.addEventListener("click", (event) => {
   // adds a read button to the newBook div
   const readButton = document.createElement("button");
   readButton.textContent = `Have not read`;
+  readButton.classList.add("notRead");
   readButton.dataset.index = myLibrary.indexOf(book);
   newBook.appendChild(readButton);
-  readButton.classList.add("notRead");
+  readButton.addEventListener("click", () => {
+    const bookIndex = readButton.dataset.index;
+    const book = myLibrary[bookIndex];
+    book.read = !book.read;
+    if (book.read) {
+      readButton.textContent = "Read";
+      readButton.classList.add("read");
+      readButton.classList.remove("notRead");
+    } else {
+      readButton.textContent = "Have not read";
+      readButton.classList.add("notRead");
+      readButton.classList.remove("Read");
+    }
+  });
 
   const removeButton = document.createElement("removeButton");
   removeButton.textContent = "Remove Book";

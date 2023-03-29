@@ -1,7 +1,9 @@
 * {
   font-family: sans-serif;
 }
-
+body {
+  background-color: #f7f7f7;
+}
 .header {
   display: flex;
   font-size: 48px;
@@ -12,32 +14,37 @@
   color: white;
   padding: 24px;
 }
+.loginBtn {
+  font-size: 24px;
+  padding: 8px;
+}
 .container {
   background-color: #f7f7f7;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 500px;
+  justify-content: center;
 }
-.add {
+#addButton {
   background: none;
   color: inherit;
   border: none;
-  padding: 0;
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  height: 50px;
-  font-size: 48px;
+  font-size: 36px;
+  padding: 12px;
 }
-.add:hover {
-  background-color: green;
+#addButton:hover {
+  background-color: #d3d3d3;
+  border-radius: 12px;
 }
 .books {
   display: flex;
   margin-top: 48px;
   gap: 24px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .book {
   height: 200px;
@@ -66,7 +73,33 @@
   padding: 20px;
   border: 1px solid black;
   display: none;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 24px;
 }
+.container input {
+  width: 90%;
+  padding: 0px;
+  margin: 6px;
+  height: 24px;
+}
+#close,
+#submitBtn {
+  height: 24px;
+  margin: 4px;
+  background: none;
+  background-color: #e4dccd;
+  border: 1px solid black;
+  font-size: 18px;
+  border-radius: 4px;
+}
+#close:hover {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+#submitBtn:hover {
+  background-color: rgba(55, 161, 55, 0.5);
+}
+
 #overlay {
   position: fixed;
   top: 0;
@@ -77,10 +110,38 @@
   z-index: 1;
   display: none;
 }
+.read {
+  background-color: rgba(55, 161, 55, 0.5);
+  width: 225px;
+  border: 0px;
+  font-size: 24px;
+  margin: 10px;
+  border-radius: 6px;
+}
+.read:hover {
+  background-color: rgba(55, 161, 55, 0.7);
+}
 .notRead {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.5);
+  width: 225px;
+  border: 0px;
+  font-size: 24px;
+  margin: 10px;
+  border-radius: 6px;
+}
+.notRead:hover {
+  background-color: rgba(255, 0, 0, 0.7);
 }
 
 .removeButton {
-  background-color: purple;
+  background-color: #dad8d8;
+  width: 225px;
+  border: 0px;
+  font-size: 24px;
+  margin: 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+.removeButton:hover {
+  background-color: red;
 }
